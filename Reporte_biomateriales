@@ -1,0 +1,328 @@
+\documentclass[final,6p,times,twocolumn]{elsarticle}
+\setlength{\parindent}{20pt} % esp. al inicio de un parrafo
+\usepackage{url}
+\usepackage{doi}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\makeatletter
+
+\renewenvironment{abstract}{\global\setbox\absbox=\vbox\bgroup
+  \hsize=\textwidth\def\baselinestretch{1}%
+  \noindent\unskip\textbf{Resumen}  % <--- Edit as necessary
+ \par\medskip\noindent\unskip\ignorespaces}
+ {\egroup}
+
+\def\keyword{%
+  \def\sep{\unskip, }%
+ \def\MSC{\@ifnextchar[{\@MSC}{\@MSC[2000]}}
+  \def\@MSC[##1]{\par\leavevmode\hbox {\it ##1~MSC:\space}}%
+  \def\PACS{\par\leavevmode\hbox {\it PACS:\space}}%
+  \def\JEL{\par\leavevmode\hbox {\it JEL:\space}}%
+  \global\setbox\keybox=\vbox\bgroup\hsize=\textwidth
+  \normalsize\normalfont\def\baselinestretch{1}
+  \parskip\z@
+  \noindent\textit{Palabras clave: }  % <--- Edit as necessary
+  \raggedright                         % Keywords are not justified.
+  \ignorespaces}
+
+\usepackage[spanish]{babel}
+
+\def\ps@pprintTitle{%
+     \let\@oddhead\@empty
+     \let\@evenhead\@empty
+     \def\@oddfoot{\footnotesize\itshape
+        \ifx\@journal\@empty   % <--- Edit as necessary
+       \else\@journal\fi\hfill\today}%
+     \let\@evenfoot\@oddfoot}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+\usepackage{amsthm}
+
+\usepackage{amsmath}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+%\journal{Journal Name}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+\title{Nanopart\'iculas de vidrio bioactivo en una matriz de PMMA como cemento para hueso}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{1642654 Jorge A. Torres Quintanilla}
+
+\address{Biomateriales Semestre Enero - Junio 2022}
+
+\address{Dr. Iv\'an Eleazar Moreno Cort\'ez}
+
+\address{Posgrado en Maestr\'ia en Ciencias de la Ingenier\'ia con Orientaci\'on en Nanotecnolog\'ia.}
+
+\address{Facultad de Ingenier\'ia Mec\'anica y El\'ectrica.}
+
+\address{Universidad Aut\'onoma de Nuevo Le\'on.}
+
+\begin{abstract}
+   La estructura que compone al tejido \'oseo es una de las m\'as complejas en la naturaleza, con un rango de tama\~nos que va desde la macroescala hasta la nanoescala. Para tratar con fracturas en este tejido, se necesitan crear materiales con propiedades mec\'anicas y biocompatibles muy espec\'ificas, a los cuales se les llama cementos de hueso. Existen diversas estrategias para obtener una buena adhesi\'on y cohesi\'on con tejidos biol\'ogicos, dependiendo de la aplicaci\'on y sustancias que se seleccionen. Aqu\'i se propone realizar un cemento para hueso basado en una matriz polim\'erica de PMMA y estudiando el efecto que tiene en sus propiedades la inclusi\'on de una fase de nanopart\'iculas de vidrio bioactivo. Debido al corto tiempo de trabajo, \'unicamente se logra sintetizar el vidrio bioactivo, pero no se obtiene una morfolog\'ia bien definida y se aglomeran las part\'iculas.
+\end{abstract}
+
+\begin{keyword}
+Cemento para hueso \sep adhesi\'on \sep PMMA \sep vidrio bioactivo \sep nanopart\'iculas
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introducci\'on}
+El tejido \'oseo es una de las estructuras m\'as complejas del cuerpo humano. Esto se debe al rango de escalas en que se presenta la arquitectura interna del hueso, que va desde la macroescala a la nanoescala, con morfolog\'ias que van desde nanoesferas, nanotubos, nanofibras, formando nanocompuestos y nanopatrones, como se puede observar en la figura \ref{fig1}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/Nanoestructura_hueso.png}
+    \caption{Rango de escalas de la estructura interna del hueso \cite{Gong}.}
+    \label{fig1}
+\end{figure}
+
+Debido a esta complejidad estructural, es dif\'icil crear un material que sustituya el hueso parcial o totalmente, e incluso que ayude a pegar las superficies del hueso en caso de una fractura. Una soluci\'on que se da a este problema es la s\'intesis de materiales conocidos como cementos para hueso, que usualmente consisten de sustancias que, al entrar en contacto con fluidos corporales, conllevan una reacci\'on qu\'imica en la que se adhieren firmemente al tejido \'oseo, creando estabilidad entre ambas partes de la fractura. Un buen cemento para hueso debe cumplir con ciertos requerimientos m\'inimos de propiedades mec\'anicas y de biocompatibilidad, as\'i como algunos atributos que son muy deseables para su correcto funcionamiento, como lo explica Farrar \cite{Farrar} y como se aprecia en el cuadro \ref{cuadro1}.
+
+\begin{table}[t]
+    \centering
+    \caption{Caracter\'isticas m\'inimas y deseables de un cemento para hueso.}
+    \begin{tabular}{p{0.47\textwidth}}
+    \textbf{Preferidas}  \\
+    \hline
+    \hline
+    Alto nivel de adhesión, seguido en presencia de contaminantes como grasas, proteínas, etc. \\
+    \hline
+    Fuerza de unión estable en ambientes húmedos. \\
+    \hline
+    Estabilidad mecánica bajo tensión, compresión, corte. \\
+    \hline
+    Fácil y rápido de preparar y aplicar en condiciones de quirófano. \\
+    \hline
+    Tiempo adecuado de operación para que el cirujano lo aplique y forme una unión. \\
+    \hline
+    Tiempo rápido de fraguado (típicamente de 1 – 10 min). \\
+    \hline
+    Baja exotermia al fraguar, sin necrosis térmica. \\
+    \hline
+    No tóxico y biocompatible, incluyendo lixiviables, productos de degradación, etc. \\
+    \hline
+    Permite la curación de la fractura. \\
+    \hline
+    Esterilizable.\\
+    \hline
+    Tiempo de vida adecuado. \\
+    \hline
+    Ser costoefectivo. \\
+    \hline
+    Comercialmente viable de manufacturar. \\
+    \hline
+    \hline
+    \textbf{Deseables} \\
+    \hline
+    \hline
+    Adhesión a aleaciones quirúrgicas (acero inoxidable, Ti–6Al–4V, Co–Cr–Mo, etc.) \\
+    \hline
+    Biodegradable en manera y tiempo controlados. \\
+    \hline
+    No requiere condiciones especiales de almacenamiento (estable a temperatura ambiente). \\
+    \hline
+    Habilidad para liberar fármacos/agentes bioactivos para promover curación de hueso, prevenir infecciones, etc. \\
+    \end{tabular}
+    \label{cuadro1}
+\end{table}
+
+Adem\'as, el material debe presentar tres propiedades que lo hagan \'util para ingenier\'ia de tejido \'oseo \cite{Gong}:
+
+\begin{itemize}
+    \item Osteoconductivo: promueve el acomplamiento, supervivencia y migración de células osteogénicas.
+    \item Osteoinductivo: ofrece un factor físico y bioquímico para inducir las células madre hacia la línea osteoblástica.
+    \item Osteogénico: contiene células madres osteogénicas para regeneración ósea.
+\end{itemize}
+
+\subsection{Mecanismos de Adhesi\'on y cohesi\'on}
+Según Zheng \cite{Zheng}, un bioadhesivo ideal sería capaz de  formarse \textit{in situ} en un material tipo gel, que puede detener a tiempo el sangrado del tejido dañado para subsecuentemente curar la herida. Para esto es muy importante el tiempo de gelación, que depende principalmente del entrecruzamiento de los bioadhesivos. Existe una gran variedad de materiales que se utilizan como bioadhesivos, y una gran parte de ellos est\'an basados en pol\'imeros, ya que estos pueden formar resinas con uniones qu\'imicas altamente estables y compatibles con tejidos biol\'ogicos. Un breve resumen de materiales com\'unmente utilizados como bioadhesivos se muestra en el cuadro \ref{cuadro2}.
+
+Una vez seleccionado el material de adhesi\'on, es importante utilizar una estrategia de cohesi\'on para que el material pueda soportar cargas sin desprenderse de s\'i mismo. En el cuadro \ref{cuadro3} se presenta una lista de diferentes estrategias de cohesi\'on dependiendo del ataque qu\'imico que se implementa. Lo usual es primero seleccionar un m\'etodo de adhesión, y después seleccionar un método de cohesión de acuerdo a las propiedades que se requieren del adhesivo. Bu agrupa las relaciones entre adhesi\'on y cohesi\'on en tres categorías \cite{Bu}:
+
+\begin{itemize}
+    \item Usar los mismos grupos funcionales para adhesión y cohesión.
+    \item Añadir grupos funcionales para la cohesión en conjunto con los de adhesión.
+    \item Usar estrategias diferentes para la cohesión y adhesión.
+\end{itemize}
+En la figura \ref{fig2} se pueden observar las distintas combinaciones de m\'etodos de adhesi\'on y cohesi\'on
+
+\begin{table}[t]
+    \centering
+    \caption{Materiales com\'unmente utilizados como bioadhesivos.}
+    \begin{tabular}{p{0.2\textwidth}|p{0.25\textwidth}}
+        Clase & Materiales \\
+        \hline\hline
+        Basados en fibrinas & Fibrin\'ogeno, trombina \\
+        \hline
+        Basados en polisac\'aridos & Quitosano, alginato, sulfato de condroitina \\
+        \hline
+        Basados en cianoacrilatos & n-butil-2-cianoacrilato, N-butil-cianoacrilato, n-hexil-cianoacrilato, n-octil-cianoacrilato \\
+        \hline
+        Basados en poliuretano & Poliuretano biodegradable \\
+        \hline
+        Basados en PEG & DOPA-PEG, PEG de 4 ramas
+    \end{tabular}
+    \label{cuadro2}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \caption{Estrategias comunes de cohesi\'on.}
+    \begin{tabular}{p{0.2\textwidth}|p{0.23\textwidth}}
+        \textbf{Estrategias covalentes} & \textbf{Estrategias no covalentes} \\
+        \hline\hline
+        Grupos fenol & Transici\'on de fase \\
+        \hline
+        NHS-\'ester & Interacciones hidrof\'obicas \\
+        \hline
+        Aldeh\'idos & Dopaje \\
+        \hline
+        Cianoacrilatos & Enlaces de hidr\'ogeno \\
+        \hline
+        Qu\'imica ``clic'' & Autoensamblado \\
+        \hline
+        Foto-entrecruzamiento
+    \end{tabular}
+    \label{cuadro3}
+\end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/Etrategias_cohesion.png}
+    \caption{Combinaciones de mecanismos de adhesi\'on y cohesi\'on para bioadhesivos.}
+    \label{fig2}
+\end{figure}
+
+Para el presente, se ha decidido utilizar una matriz polim\'erica de polimetilmetacrilato (PMMA) como adhesivo y cemento para hueso, as\'i como la inclusi\'on de nanopart\'iculas de vidrio bioactivo basado en Si/P/Ca como relleno de la matriz, esto con el prop\'osito de mejorar las propiedades osteoregenerativas y biomineralizantes del PMMA.
+
+\section{Antecedentes}
+En repetidas ocasiones se ha utilizado efectivamente el PMMA como ingrediente principal en la fabricaci\'on de cementos para hueso, y es com\'unmente utilizado en ambientes cl\'inicos y distribu\'ido comercialmente. Sin embargo, el PMMA por s\'i mismo tiene propiedades mec\'anicas no tan deseables y su biocompatibilidad llega a ser pobre debido a la alta temperatura de polimerizaci\'on que presenta, llegando a causar necrosis en el tejido circundante \cite{Sa}. Ayatollahi \cite{Ayatollahi} encontr\'o que, al a\~nadir hasta un 10\% en peso de nanopart\'iculas de hidroxiapatita se puede mejorar la tenacidad de fractura de este tipo de compuestos, mientras que Sa \cite{Sa} logr\'o mejorar la bioactividad y bioadhesi\'on, adem\'as disminuir la temperatura de polimerizaci\'on por denbajo 30 ºC y alcanzar un m\'odulo el\'astico de hasta 584 MPa, al hacer un compuesto de PMMA en conjunto con un hidrogel de quitosano-glicerofosfato enriquecido con nanohidroxiapatita y gentamicina antibi\'otica. Estos trabajos presentan la posibilidad de seguir mejorando las propiedades del PMMA como biomaterial utilizado en aplicaciones de cemento para hueso por medio de la inclusi\'on de otros componentes, sobre todo en la nanoescala, que le aporten un efecto sin\'ergico y permitan su completo aprovechamiento en ambiente cl\'inicos.
+
+\section{Hipótesis}
+La inclusión de nanopartículas de un vidrio bioactivo en una matriz polimérica de PMMA mejorará las propiedades mecánicas, osteoadhesivas, osteoinductivas, osteoregenerativas y biocompatibles del polímero.
+
+\subsection{Objetivo General}
+Comprobar los efectos que tiene la inclusión de una fase de nanopartículas de un vidrio bioactivo basado en Si/P/Ca en las propiedades mecánicas, osteoadhesivas, osteoregenerativas,  osteoinductivas y la biocompatibilidad de una matriz polimérica de PMMA.
+
+\subsection{Objetivos Espec\'ificos}
+\begin{itemize}
+    \item Estudiar el efecto que tiene la relación PMMA/vidrio bioactivo en sus propiedades mecánicas, adhesivas y biológicas.
+    \item Estudiar la interacción física y química entre el vidrio bioactivo y la matriz de PMMA.
+    \item Estudiar el grado de biomineralización que tiene la mezcla de PMMA/vidrio bioactivo.
+    \item Estudiar el efecto que tiene la mezcla PMMA/vidrio bioactivo en el grado de citotoxicidad al interactuar con células óseas.
+\end{itemize}
+
+\section{Materiales y M\'etodos}
+El buffer de tetraetil ortosilicato (TEOS), el trietil fosfato (TEP), el nitrato de calcio tetrahidratado y el \'acido n\'itrico (Mw = 63.01) fueron adquiridos de Sigma-Aldrich. Otras sustancias utilizadas fueron de grado reactivo y aplicadas como se obtienen de manera comercial.
+
+\subsection{S\'intesis de nanopart\'iculas de vidrio bioactivo}
+Se sigui\'o el m\'etodo de sol-gel (tambi\'en denominado m\'etodo St\"ober), descrito por Oudadesse \cite{Oudadesse} para la fabricaci\'on de las nanopart\'iculas de vidrio bioactivo. En primer lugar, se mezclaron 42.5 mL del buffer de TEOS con 4.2 mL de \'acido n\'itrico y se colocaron sobre una agitadora a velocidad moderada durante 30 minutos. Transcurrido el tiempo, se introdujeron lentamente 2.8 mL de TEP y 24.5 g de nitrato de calcio. La mezcla en su totalidad se dej\'o en agitaci\'on moderada durante 45 minutos hasta que se form\'o un gel espeso. El gel se dej\'o reposando a temperatura ambiente durante 48 horas, durante las cuales se cristaliz\'o. El s\'olido resultante se extrajo en tazones refractarios hacia un horno, donde se calentaron a 600 ºC por 5 horas y dej\'andolos enfriar durante 48 horas. Esto causa la evaporaci\'on completa de cualquier l\'iquido que quedara, obteniendo un polvo bruto color blanco. Este polvo se macer\'o manualmente hasta formar un polvo muy fino del mismo color.
+
+\subsection{SEM}
+Se tomaron muestras peque\~nas del polvo y se hicieron pruebas de imagen superficial por medio de microscop\'ia electr\'onica de barrido (SEM). Esto permite conocer la estructura f\'isica del vidrio bioactivo, as\'i como hacer un an\'alisis de la disperis\'on de tama\~nos de las nanopart\'iculas.
+
+\begin{figure}
+\centering
+    \begin{subfigure}[t]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{images/muestra 5_i001.png}
+         \caption{\ }
+         \label{fig3a}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{images/muestra 5_i012.png}
+         \caption{\ }
+         \label{fig3b}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{images/muestra 5_i015.png}
+         \caption{\ }
+         \label{fig3c}
+     \end{subfigure}
+    \caption{Im\'agenes de SEM de las nanopart\'iculas de vidrio bioactivo.}
+    \label{fig3}
+\end{figure}
+
+\section{Resultados}
+La figura \ref{fig3} muestra los resultados del SEM. Se pueden observar las part\'iculas aglomeradas de vidrio bioactivo a diferentes escalas. En la figura \ref{fig3a} se observan conjuntos de part\'iculas operando el microscopio a 5.0 kV, la escala representa 500 nm al igual que la figura \ref{fig3b}. En esta segunda figura, el microscopio opera a 3.0 kV, lo mismo que para la figura \ref{fig3c}. Sin embargo, en esta \'ultima la escala representa 1.00 $\mu$m.
+
+\subsection{Discusi\'on}
+Como se puede observar de la figura \ref{fig3}, las nanopart\'iculas de vidrio bioactivo se encuentran aglomeradas en c\'umulos bastante grandes, del orden de micras. Sin embargo, se pueden hacer algunas distinciones en la forma que presentan, como en la figura \ref{fig3a}, donde se aprecia la morfolog\'ia casi  esf\'erica de las part\'iculas y tama\~nos de unas decenas de nan\'ometros. En las dem\'as figuras, la morfolog\'ia no se encuentra tan bien definida, por lo que no se puede hacer una distinci\'on clara entre part\'iculas.
+
+\section{Conclusi\'on}
+Debido al tiempo limitado que se tuvo en este proyecto, no se han podido realizar suficientes componentes del material ni suficientes mediciones para lograr un buen estimado de los efectos que tienen las nanopart\'iculas de vidrio bioactivo en la matriz de PMMA, por lo que no se ha podido comprobar la validez de la hip\'otesis. Sin embargo, de las im\'agenes SEM del vidrio bioactivo se ha observado que no se lograron obtener nanopart\'iculas monodispersas, ya que se encuentran aglomeradas en grandes conjuntos sin una morfolog\'ia \'unica apreciable.
+
+\subsection{Trabajo a Futuro}
+Se podr\'ia trabajar en obtener una matriz polim\'erica de PMMA con una porosidad deseable para su aplicaci\'on como cemento de hueso, en donde tambi\'en puedan introducirse las nanopart\'iculas de vidrio bioactivo para actuar como puntos de mineralizaci\'on del hueso al entrar en contacto con fluidos corporales y el tejido \'oseo. Adem\'as, es importante seguir trabajando en el m\'etodo de s\'intesis de las nanopart\'iculas de vidrio bioactivo para que sean monodispersas, de un tama\~no ideal para la matriz de PMMA y que no se aglomeren y tengan una morfolog\'ia bien definida.
+
+\bibliographystyle{elsarticle-num-names}
+\bibliography{Referencias}
+
+\end{document}
